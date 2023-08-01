@@ -1,0 +1,159 @@
+OOP
+
+Class
+Object
+Capsulation
+
+
+Inheritance
+Polymorphism
+
+
+
+
+Relationship
+
+is-part-of : Composion
+has-a : Aggregation
+use-a : Asscociation
+is-a : Generalization / Specialization
+
+
+<is-part-of>
+
+    is part of -> 구성요소
+
+    멤버 변수
+
+    엔진 is-part-of
+    
+    엔진은 차의 구성요소 중 하나
+        - 멤버 변수 중의 하나
+    엔진은 한번에 하나의 차량에만 탑재
+        - Car 인스턴스에 각각 Engine이 존재
+    엔진은 차에 의해 관리됨.
+        - Car 인스턴스가 생성될 때, 소멸될 때 각각 Engine 따라감.
+    엔진은 차량이 뭔지 모름
+        - Engine에서는 Car에 접근할 수단이 없음.
+
+
+
+
+
+
+    has-a
+
+    포인터 멤버 변수
+    
+        차 has-a 타이어
+        
+            타이어는 차의 일부 요소
+            타이어는 한번에 여러 자동차에 소유할 수 있음.
+            타이어는 차량에 의해 관리되지 않음.
+            타이어는 차량을 모름
+
+    
+        class Tire
+        {
+            int mWheelSize;
+        };
+
+        class Car
+        {
+            Tire* mpTire;
+        }
+
+        
+    use-a
+        
+    포인터 멤버 변수('has-a'와의 차이는 use-a는 없어도 됨. has-a는 필수! )
+    => 더 간단하게 : 함수 매개변수 포인터로 사용할 수 있느냐!
+    
+        운전자 use-a 차
+        
+        차는 운전자와 관련이 없음
+        차는 여러 운전자가 사용가능
+        차는 운전자에 의해 관리되지 않음
+        차는 운전자를 모를것임. 알수도있지만~
+
+        
+    is-a
+    
+    일반화
+
+        경찰차, 소방차, 승용차는 모두 '차'이다.
+        
+
+    상속(파생) Inheritance/Derivation
+
+    Derivation              Inheritance
+    Base Class              Parent Class        Super Class
+    Derived Class           Child Class         Sub Class
+
+
+    C++ 문법
+        class <child-class> : [virtual] [access-modifier] <parent-class>, ...
+        {
+            
+        };
+
+        EX.
+        class Cat : public Animal
+        {
+            
+        };
+
+
+        Parent      public 상속      protected 상속       private 상속
+        public      public           protected           private
+        protected   protected        protected           private
+        private     접근 불가         접근 불가           접근 불가
+
+
+
+
+
+    overriding
+        자식 멤버함수 오버라이딩
+        부모 멤버함수를 자식이 재정의
+        동일한 반환값, 동일한 이름, 동일한 매개변수를 가져야 함.
+
+    overloading
+        
+        
+
+    다형성 (Ploymorphism)
+        클래스의 상속과 포인터(+가상함수)에 의해서 만들어지는 개념
+        포인터를 이용해서 타입을 바꿔서 다른 클래스로 사용할 수 있음.
+            is-a
+
+
+
+        가상 함수 ( virtual function )
+            자식이 오버라이딩 할 것을 기대하는 함수
+            함수 연결(bind)을 Runtime으로 보류 (동적으로 할당되거나 하는 메모리)
+
+            키워드로 아래와 같이 사용하는 것이 헷갈리지않고 좋음
+
+            class a
+            {
+                'virtual' void f()
+                {
+
+                }
+            };
+
+            class b : public a
+            {
+                void f() 'overriding'
+                {
+
+                }
+            };
+
+            Compiletime Bingind         Runtime Binding
+            Early Binding               Late Binding
+            Static Binding              Dynamic Binding
+
+            클래스에서 상속 구조를 만들 때 부모의 소멸자는 '무조건!!!' 가상 소멸자로 만들 것
+            그래야 자식을 다형성으로 사용할 때 정상 작동함.
