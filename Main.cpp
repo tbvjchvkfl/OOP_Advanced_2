@@ -23,6 +23,34 @@ class MyChild : public MyParent
 	}
 };
 
+// 다형성의 개념
+
+class Parent
+{
+public:
+	void f1()
+	{
+		std::cout << "Parent f1" << std::endl;
+	}
+	void f2()
+	{
+		std::cout << "Parent f2" << std::endl;
+	}
+};
+
+class Child : public Parent
+{
+public:
+	void f1()
+	{
+		std::cout << "Child f1" << std::endl;
+	}
+	void f2()
+	{
+		std::cout << "Child f2" << std::endl;
+	}
+};
+
 int main()
 {
 	Cat nabi;
@@ -39,4 +67,14 @@ int main()
 	Darong.Sound();
 	Darong.Hawling();
 
+	Parent* parent = new Parent;
+	Child* child = new Child;
+	
+	parent->f1();
+	parent->f2();
+	child->f1();
+	child->f2();
+
+	Cat* p = new Cat;
+	delete p;
 }

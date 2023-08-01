@@ -5,6 +5,11 @@ Animal::Animal() : mAge{}, mWeight{ 1 }
 	std::cout << "[+] Animal" << std::endl;
 }
 
+Animal::Animal(int age, int weight) : mAge{ age }, mWeight{ weight } 
+{
+	std::cout << "[+] Animal" << std::endl;
+}
+
 Animal::~Animal()
 {
 	std::cout << "[-] Animal" << std::endl;

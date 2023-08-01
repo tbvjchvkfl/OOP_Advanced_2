@@ -7,6 +7,7 @@ protected:
 
 public:
 	Animal();
+	Animal(int age, int weight);
 	~Animal();
 
 	int GetAge() const;
